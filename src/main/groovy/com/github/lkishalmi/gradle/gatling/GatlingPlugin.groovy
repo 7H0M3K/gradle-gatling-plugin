@@ -31,6 +31,9 @@ class GatlingPlugin implements Plugin<Project> {
 
         createConfiguration(gatlingExt)
 
+        project.tasks.create(name: 'gatlingInit', type: GatlingInitTask,
+                description: "Create sample project skeleton", group: "Gatling")
+
         createGatlingTask(GATLING_RUN_TASK_NAME, gatlingExt)
 
         project.tasks.getByName("processGatlingResources").doLast(new LogbackConfigTaskAction())
